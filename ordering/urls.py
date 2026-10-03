@@ -11,4 +11,5 @@ urlpatterns = [
     path('meals/', views.meals, name='meals'),
     path('salads/', views.salads, name='salads'),
     path('sauces/', views.sauces, name='sauces'),
+    path('drinks/', views.drinks, name='drinks'),
 ]
