@@ -4,6 +4,9 @@ from django.http import HttpResponse
 
 
 def ordering(request):
+    return render(request, 'ordering/ordering.html')
+
+def ordering(request):
     return render(request, 'ordering/drinks.html')
 
 def treats(request):
