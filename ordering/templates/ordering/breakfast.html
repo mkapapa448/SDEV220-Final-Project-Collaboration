@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kickin' Chicken - Breakfast</title>
+    </head>
+
+    <body>
+        <h1>Breakfast</h1>
+
+
+        {% for name, price in breakfast.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+    </body>
+</html>

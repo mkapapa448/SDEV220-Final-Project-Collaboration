@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kickin' Chicken - Meals</title>
+    </head>
+
+    <body>
+        <h1>Meals</h1>
+
+        <h2>Spicy Chicken Meals</h2>
+        {% for name, price in spicy_chicken.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+
+        <h2>Original Chicken Meals</h2>
+        {% for name, price in original_chicken.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+
+        <h2>Chicken Strip Meals</h2>
+        {% for name, price in chicken_strips.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+
+        <h2>Chicken Waffle Meals</h2>
+        {% for name, price in chicken_waffles.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+    </body>
+</html>
