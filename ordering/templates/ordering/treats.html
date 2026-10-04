@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kickin' Chicken - Treats</title>
+    </head>
+
+    <body>
+        <h1>Treats</h1>
+
+
+        {% for name, price in treats.items %}
+            <p>
+                {{ name }} - ${{ price }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+    </body>
+</html>

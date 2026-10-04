@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kickin' Chicken - Drinks</title>
+    </head>
+
+    <body>
+        <h1>Drinks</h1>
+
+        <h2>Sodas</h2>
+
+        {% for name, price in soda.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+
+        <h2>Lemonades and Teas</h2>
+
+        {% for name, price in lemonade_tea.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+
+        <h2>Coffee</h2>
+
+        {% for name, price in coffee.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+        
+        <h2>Milk</h2>
+
+        {% for name, price in milk.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+
+        <h2>Juices and Water</h2>
+
+        {% for name, price in juices_water.items %}
+            <p>
+                {{ name }} - ${{ price|floatformat:2 }}
+                <button type="button">Add to Order</button>
+            </p>
+        {% endfor %}
+    </body>
+</html>
