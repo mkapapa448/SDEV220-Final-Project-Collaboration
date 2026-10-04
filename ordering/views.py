@@ -3,8 +3,6 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def ordering(request):
-    return render(request, 'ordering/home.html')
 
 def drinks(request):
     soda_menu = {
