@@ -69,7 +69,34 @@ def treats(request):
     return render(request, 'ordering/treats.html', {'treats': treats_menu})
 
 def breakfast(request):
-    return render(request, 'ordering/breakfast.html')
+    original_breakfast_menu = {
+        "Chicken & Waffles Breakfast Sandwich W/ Chicken & Waffles Sandwich Filet Meal": 8.79,
+        "Kickin Chicken Biscuit Meal": 7.25,
+        "Mini Chicken Meal": 8.35,
+        "Kicken Minis": 8.35,
+        "Chicken & Waffles Breakfast Sandwich w/ Filet Meal": 5.49,
+        "Hash Browns": 1.75,
+        "Breakfast Waffle": 1.65,
+        "Breakfast Biscuit": 1.65,
+    }
+
+    spicy_breakfast_menu = {
+        "Chicken and Waffles Breakfast Sandwich W/ Spicy Filet Meal": 9.05,
+        "Kickin Chicken Spicy Chicken Biscuit Meal": 7.49,
+        "Chicken & Waffles breakfast Sandwich w/ Spicy Filet Meal": 5.75,
+    }
+
+    fruits_menu = {
+        "Berry Parfait": 4.99,
+        "Fruit Cup": 4.29,
+    }
+
+    return render(request, 'ordering/breakfast.html', {
+        'original_breakfast': original_breakfast_menu,
+        'spicy_breakfast': spicy_breakfast_menu,
+        'fruits': fruits_menu,
+
+        })
 
 def family_meals(request):
     family_menu = {
@@ -81,7 +108,13 @@ def family_meals(request):
     return render(request, 'ordering/family_meals.html', {'family_meals': family_menu})
 
 def kids_meals(request):
-    return render(request, 'ordering/kids_meals.html')
+    kids_meal_menu = {
+        "5 CT Kickin Nuggets Meal": 3.40,
+        "2 Ct Kickin Strips Meal": 6.95,
+        "5 Ct Grilled Kickin Nuggets Meal": 7.05,
+        "Mac and Cheese Kid's Meal": 7.05
+    }
+    return render(request, 'ordering/kids_meals.html', {'kids_meals': kids_meal_menu})
 
 def meals(request):
     chicken_waffles_menu = {
