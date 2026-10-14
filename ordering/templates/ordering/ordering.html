@@ -12,12 +12,24 @@
     </header>
 
     <main>
+
         <h2>Menu Options</h2>
+        
         <ul>
-            <li><a href="/breakfast/">Breakfast Menu</a></li>
+            <li><a href="/entrees/">Entrées</a></li>
+            <li><a href="/sides/">Sides</a></li>
+            <li><a href="/breakfast/">Breakfast</a></li>
             <li><a href="/meals/">Meals</a></li>
-            <li><a href="/coffee/">Coffee & Drinks</a></li>
+            <li><a href="/drinks/">Coffee & Drinks</a></li>
+            <li><a href="/treats/">Treats</a></li>
+            <li><a href="/salads/">Salads</a></li>
+            <li><a href="/sauces/">Sauces</a></li>
+            <li><a href="/kidsmeals/">Kid's Meals</a></li>
+            <li><a href="/familymeals/">Family Meals</a></li>
         </ul>
+        
+        {% block content %}
+        {% endblock %}
     </main>
     <script src="{% static 'ordering/script.js' %}"></script>
 </body>

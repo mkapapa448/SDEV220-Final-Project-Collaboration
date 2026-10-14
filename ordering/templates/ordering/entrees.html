@@ -1,0 +1,32 @@
+{% extends 'ordering/ordering.html' %}
+{% block content %}
+
+    <h1>Entrées Menu</h1>
+
+
+    <h2>Original Menu</h2>
+    {% for name, price in original_entree.items %}
+        <p>
+            {{ name }} - ${{ price|floatformat:2 }}
+            <button type="button">Add to Order</button>
+        </p>
+    {% endfor %}
+
+    <h2>Spicy Menu</h2>
+
+    {% for name, price in spicy_entree.items %}
+        <p>
+            {{ name }} - ${{ price|floatformat:2 }}
+            <button type="button">Add to Order</button>
+        </p>
+    {% endfor %}
+
+    <h2>Nugget Menu</h2>
+
+    {% for name, price in nugget_entree.items %}
+        <p>
+            {{ name }} - ${{ price|floatformat:2 }}
+            <button type="button">Add to Order</button>
+        </p>
+    {% endfor %}
+{% endblock %}
