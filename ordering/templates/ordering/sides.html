@@ -1,0 +1,13 @@
+{% extends 'ordering/ordering.html' %}
+{% block content %}
+
+    <h1>Sides Menu</h1>
+
+
+    {% for name, price in sides.items %}
+        <p>
+            {{ name }} - ${{ price|floatformat:2 }}
+            <button type="button">Add to Order</button>
+        </p>
+    {% endfor %}
+{% endblock %}

@@ -3,6 +3,8 @@ from django.http import HttpResponse
 # Create your views here.
 
 
+def ordering(request):
+    return render(request, 'ordering/ordering.html')
 
 def drinks(request):
     soda_menu = {
@@ -100,7 +102,7 @@ def family_meals(request):
     family_menu = {
         "Kickin Chicken Nuggets Family Style": 32.49,
         "Kickin Chicken Kickn' Strips Family Meal": 32.49,
-        "Grilled Nugget Family Style": 35.49
+        "Grilled Nugget Family Style": 35.49,
     }
 
     return render(request, 'ordering/family_meals.html', {'family_meals': family_menu})
@@ -110,7 +112,7 @@ def kids_meals(request):
         "5 CT Kickin Nuggets Meal": 3.40,
         "2 Ct Kickin Strips Meal": 6.95,
         "5 Ct Grilled Kickin Nuggets Meal": 7.05,
-        "Mac and Cheese Kid's Meal": 7.05
+        "Mac and Cheese Kid's Meal": 7.05,
     }
     return render(request, 'ordering/kids_meals.html', {'kids_meals': kids_meal_menu})
 
@@ -130,13 +132,13 @@ def meals(request):
         "Grilled Chicken Sandwich": 10.99,
         "Grilled Chicken Club Meal": 12.89,
         "Kicken Chicken Sandwich Meal": 9.45,
-        "Kicken Chicken Deluxe Meal": 10.25
+        "Kicken Chicken Deluxe Meal": 10.25,
     }
 
     chicken_strip_menu = {
         "Kickin Chicken Nuggets Meal": 9.55,
         "Kicken Chicken Grilled Nuggets Meal": 10.39,
-        "Chicken Strips Meal": 9.89
+        "Chicken Strips Meal": 9.89,
     }
 
     return render(request, 'ordering/meals.html', {
@@ -150,7 +152,7 @@ def salads(request):
     salad_menu = {
         "Cobb Salad": 9.89,
         "Market Salad": 10.09,
-        "Kickin' Salad": 11.25
+        "Kickin' Salad": 11.25,
     }
 
     return render(request, 'ordering/salads.html', {'salads': salad_menu})
@@ -161,7 +163,50 @@ def sauces(request):
         "8oz Honey Mustard Sauce": 3.00,
         "8oz Barbecue Sauce": 2.75,
         "8oz Kickin Sauce (Regular)": 3.00,
-        "8oz Saucy Chicken Ranch": 2.75
+        "8oz Saucy Chicken Ranch": 2.75,
     }
 
     return render(request, 'ordering/sauces.html', {'sauces': sauces_menu})
+
+def sides(request):
+    sides_menu = {
+        "Kicken Chicken Waffle Fries": 2.65,
+        "Fruit Cup": 4.29,
+        "Side Salad": 4.39,
+        "Mac & Cheese": 4.29,
+        "Kale Crunch Side": 4.29,
+        "Berry Parfait": 4.99,
+        "Apple Sauce": 2.49,
+        "Cheese Sauce": 1.55,
+    }
+
+    return render(request, 'ordering/sides.html', {'sides': sides_menu})
+
+def entrees(request):
+    original_entree_menu = {
+        "Chicken & Waffles Sandwich w/ Kicken' Filet": 8.39,
+        "Chicken & Waffles Sandwich w/ Grilled Filet": 9.15,
+        "Kicken' Chicken Sandwich": 5.29,
+        "Kicken' Deluxe Sandwich": 6.09,
+        "Kicken' Chicken Cool Wrap": 6.85,
+        "Grilled Chicken Sandwich": 6.85,
+        "Kicken' Chicken Grilled Club Sandwich": 8.75,
+    }
+
+    spicy_entree_menu = {
+        "Chicken & Waffles Sandwich w/ Spicy Kicken' Filet": 8.79,
+        "Spicy Deluxe Sandwich": 6.49,
+        "Spicy Kicken' Sandwich": 5.69,
+    }
+
+    nugget_menu = {
+        "Kicken Nuggets": 5.39,
+        "Grilled Kicken Nuggets": 6.19,
+        "Kicken Chicken Tenders": 5.65,
+    }
+
+    return render(request, 'ordering/entrees.html', {
+        'original_entree': original_entree_menu,
+        'spicy_entree': spicy_entree_menu,
+        'nugget_entree': nugget_menu,
+    })
