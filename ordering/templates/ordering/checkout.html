@@ -1,14 +1,31 @@
 {% extends 'ordering/ordering.html' %}
-
+{% load static %}
 {% block content %}
 
     <h1>Kickin' Chicken Checkout</h1>
     <h2>Shopping Cart</h2>
 
-    {% for item, quantity in cart.items %}
+    {% for item in cart_items %}
 
-        <p>{{ item }} - Quantity : {{ quantity }}</p>
+        <p><strong>{{ item.name }}</strong> -
+            <strong>Quantity:</strong> {{ item.quantity }} -
+            <strong>Price:</strong> ${{ item.price|floatformat:2 }} -
+            <strong>Subtotal:</strong> ${{item.subtotal|floatformat:2 }}
+        </p>
 
+
+        <form method="POST" action="{% url 'remove_item' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ item.name }}">
+
+            <button type="submit">Remove Item
+                <img src="{% static 'ordering/images/trash-fill.svg' %}"
+                    alt=""
+                    width="16"
+                    height="16">
+            </button>
+        </form>
     {% empty %}
 
         <p>Your cart is empty. Please order from our
@@ -16,4 +33,20 @@
         </p>
         
     {% endfor %}
+
+    <h3>Subtotal: ${{ total|floatformat:2 }}</h3>
+    <h3>Tax: ${{ tax|floatformat:2 }}</h3>
+    <h3>Grand Total: ${{ grand_total|floatformat:2 }}</h3>
+
+    <form method="POST" action="{% url 'place_order' %}">
+        {% csrf_token %}
+
+        <button type="submit">Place Order
+            <img src="{% static 'ordering/images/hand-thumbs-up.svg' %}"
+                alt=""
+                width="16"
+                height="16">
+        </button>
+    </form>
+
 {% endblock %}
