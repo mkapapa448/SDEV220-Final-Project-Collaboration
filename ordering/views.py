@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-# Create your views here.
 
+
+#All functions return the proper menus. Due to the scope I brought all of the menu's outside
+#This helps track the cost of every item globally instead of locally.
 
 def ordering(request):
     return render(request, 'ordering/ordering.html')
@@ -211,7 +213,9 @@ def entrees(request):
         'nugget_entree': nugget_menu,
     })
 
-all_items = {
+#this list controls the menu's list globally so we can get accurate pricing.
+
+all_menus = {
     **original_entree_menu,
     **spicy_entree_menu,
     **nugget_menu,
