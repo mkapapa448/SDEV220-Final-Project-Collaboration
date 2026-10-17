@@ -7,29 +7,46 @@
     {% for name, price in original_breakfast.items %}
         <p>
             {{ name }} - ${{ price|floatformat:2 }}
-            <button type="button">Add to Order</button>
         </p>
+        <form method="POST" action="{% url 'add_order' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ name }}">
+            <input type="hidden" name="category" value="breakfast">
+            <button type="submit">Add to Order</button>
+        </form>
+
     {% endfor %}
 
     <h2>Breakfast Fruits</h2>
     {% for name, price in fruits.items %}
         <p>
             {{ name }} - ${{ price|floatformat:2 }}
-            <form method="POST" action="{% url 'add_order' %}">
-                {% csrf_token %}
-
-                <input type="hidden" name="item_name" value="{{ name }}">
-                
-                <button type="button">Add to Order</button>
-            </form>
         </p>
+        
+        <form method="POST" action="{% url 'add_order' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ name }}">
+            <input type="hidden" name="category" value="breakfast">
+            <button type="submit">Add to Order</button>
+        </form>
+
     {% endfor %}
 
     <h2>Spicy Breakfast</h2>
     {% for name, price in spicy_breakfast.items %}
         <p>
             {{ name }} - ${{ price|floatformat:2 }}
-            <button type="button">Add to Order</button>
         </p>
+
+        <form method="POST" action="{% url 'add_order' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ name }}">
+            <input type="hidden" name="category" value="breakfast">
+            <button type="submit">Add to Order</button>
+        </form>
+        
     {% endfor %}
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'ordering/ordering.html' %}
+
+{% block content %}
+
+    <h1>Kickin' Chicken Checkout</h1>
+    <h2>Shopping Cart</h2>
+
+    {% for item, quantity in cart.items %}
+
+        <p>{{ item }} - Quantity : {{ quantity }}</p>
+
+    {% empty %}
+
+        <p>Your cart is empty. Please order from our
+            <a href="{% url 'ordering' %}">menu!</a>
+        </p>
+    {% endfor %}
+{% endblock %}
