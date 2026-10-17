@@ -1,0 +1,15 @@
+{% extends 'ordering/ordering.html' %}
+
+{% block content %}
+
+    <h1>Order Placed Successfully!</h1>
+
+    <p>
+        Thank you for ordering at Kickin' Chicken!
+        We hope you enjoy your Meal!
+    </p>
+
+    <a href="{% url 'ordering' %}">Return to menu to order more.</a>
+
+
+{% endblock %}

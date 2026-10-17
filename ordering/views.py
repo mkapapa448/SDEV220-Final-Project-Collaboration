@@ -266,7 +266,56 @@ def add_order(request):
 
 def view_cart(request):
     cart = request.session.get('cart', {})
+    cart_items = []
+    total = 0
+
+    for item, quantity in cart.items():
+        if item in all_menus:
+            price = all_menus[item]
+            subtotal = price * quantity
+            total += subtotal
+
+            cart_items.append({
+                'name': item,
+                'quantity': quantity,
+                'price': price,
+                'subtotal': subtotal,
+            })
+
+    tax = round(total * .07, 2)
+    grand_total = total + tax
 
     return render(request, 'ordering/checkout.html', {
-        'cart': cart
+        'cart_items': cart_items,
+        'total': total,
+        'tax': tax,
+        'grand_total': grand_total
     })
+
+def place_order(request):
+    if request.method =='POST':
+        cart = request.session.get('cart', {})
+
+        if not cart:
+            return redirect('view_cart')
+
+        request.session['cart'] = {}
+
+        return render(request, 'ordering/place_order.html',)
+    return redirect('view_cart')
+
+def remove_item(request):
+    if request.method =='POST':
+        item = request.POST.get('item_name')
+        cart = request.session.get('cart', {})
+
+        if item in cart:
+            cart[item] -=1
+            
+            if cart[item] <= 0:
+                del cart[item]
+
+            request.session['cart'] = cart
+        return redirect('view_cart')
+
+    return HttpResponse("Method not allowed.", status=405)
