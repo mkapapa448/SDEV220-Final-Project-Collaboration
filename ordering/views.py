@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # Create your views here.
 
@@ -59,7 +59,7 @@ def treats(request):
         "Chocolate Milkshake": 4.95,
         "Vanilla Milkshake": 4.95,
         "Cookies & Cream Milkshade": 4.95,
-        "Frosted Kickenade": 4.75,
+        "Frosted Kickinade": 4.75,
         "Chocolate Brownie": 2.29,
         "Chocolate Cookie": 1.79,
         "Ice Cream Cone": 1.89,
@@ -70,10 +70,10 @@ def treats(request):
 
 def breakfast(request):
     original_breakfast_menu = {
-        "Chicken & Waffles Breakfast Sandwich W/ Chicken & Waffles Sandwich Filet Meal": 8.79,
+        "Chicken & Waffles Breakfast Sandwich w/ Kickin Filet": 8.79,
         "Kickin Chicken Biscuit Meal": 7.25,
         "Mini Chicken Meal": 8.35,
-        "Kicken Minis": 8.35,
+        "Kickin Minis": 8.35,
         "Chicken & Waffles Breakfast Sandwich w/ Filet Meal": 5.49,
         "Hash Browns": 1.75,
         "Breakfast Waffle": 1.65,
@@ -81,7 +81,7 @@ def breakfast(request):
     }
 
     spicy_breakfast_menu = {
-        "Chicken and Waffles Breakfast Sandwich W/ Spicy Filet Meal": 9.05,
+        "Chicken and Waffles Breakfast Sandwich w/ Spicy Filet Meal": 9.05,
         "Kickin Chicken Spicy Chicken Biscuit Meal": 7.49,
         "Chicken & Waffles breakfast Sandwich w/ Spicy Filet Meal": 5.75,
     }
@@ -124,20 +124,20 @@ def meals(request):
     }
 
     spicy_chicken_menu = {
-        "Kicken Chicken Spicy Sandwich Meal": 9.85,
+        "Kickin Chicken Spicy Sandwich Meal": 9.85,
         "Spicy Chicken Deluxe Meal": 10.65,
     }
 
     original_chicken_menu = {
         "Grilled Chicken Sandwich": 10.99,
         "Grilled Chicken Club Meal": 12.89,
-        "Kicken Chicken Sandwich Meal": 9.45,
-        "Kicken Chicken Deluxe Meal": 10.25,
+        "Kickin Chicken Sandwich Meal": 9.45,
+        "Kickin Chicken Deluxe Meal": 10.25,
     }
 
     chicken_strip_menu = {
         "Kickin Chicken Nuggets Meal": 9.55,
-        "Kicken Chicken Grilled Nuggets Meal": 10.39,
+        "Kickin Chicken Grilled Nuggets Meal": 10.39,
         "Chicken Strips Meal": 9.89,
     }
 
@@ -170,7 +170,7 @@ def sauces(request):
 
 def sides(request):
     sides_menu = {
-        "Kicken Chicken Waffle Fries": 2.65,
+        "Kickin Chicken Waffle Fries": 2.65,
         "Fruit Cup": 4.29,
         "Side Salad": 4.39,
         "Mac & Cheese": 4.29,
@@ -184,29 +184,58 @@ def sides(request):
 
 def entrees(request):
     original_entree_menu = {
-        "Chicken & Waffles Sandwich w/ Kicken' Filet": 8.39,
+        "Chicken & Waffles Sandwich w/ Kickin' Filet": 8.39,
         "Chicken & Waffles Sandwich w/ Grilled Filet": 9.15,
-        "Kicken' Chicken Sandwich": 5.29,
-        "Kicken' Deluxe Sandwich": 6.09,
-        "Kicken' Chicken Cool Wrap": 6.85,
+        "Kickin' Chicken Sandwich": 5.29,
+        "Kickin' Deluxe Sandwich": 6.09,
+        "Kickin' Chicken Cool Wrap": 6.85,
         "Grilled Chicken Sandwich": 6.85,
-        "Kicken' Chicken Grilled Club Sandwich": 8.75,
+        "Kickin' Chicken Grilled Club Sandwich": 8.75,
     }
 
     spicy_entree_menu = {
-        "Chicken & Waffles Sandwich w/ Spicy Kicken' Filet": 8.79,
+        "Chicken & Waffles Sandwich w/ Spicy Kickin' Filet": 8.79,
         "Spicy Deluxe Sandwich": 6.49,
-        "Spicy Kicken' Sandwich": 5.69,
+        "Spicy Kickin' Sandwich": 5.69,
     }
 
     nugget_menu = {
-        "Kicken Nuggets": 5.39,
-        "Grilled Kicken Nuggets": 6.19,
-        "Kicken Chicken Tenders": 5.65,
+        "Kickin Nuggets": 5.39,
+        "Grilled Kickin Nuggets": 6.19,
+        "Kickin Chicken Tenders": 5.65,
     }
 
     return render(request, 'ordering/entrees.html', {
         'original_entree': original_entree_menu,
         'spicy_entree': spicy_entree_menu,
         'nugget_entree': nugget_menu,
+    })
+
+def add_order(request):
+    if request.method == 'POST':
+        item = request.POST.get('item_name')
+        category = request.POST.get('category')
+
+        print(f"Selected item: {item}")
+
+        cart = request.session.get('cart', {})
+
+        allowed_categories = [
+            'drinks', 'salads', 'treats',
+            'sides', 'entrees', 'breakfast',
+            'sauces', 'ordering', 'familymeals',
+            'kidsmeals', 'meals', 'cart'
+        ]
+
+        if category in allowed_categories:
+            return redirect(category)
+
+        return redirect('ordering')
+    return HttpResponse("Method not allowed.", status=405)
+
+def view_cart(request):
+    cart = request.session.get('cart', {})
+
+    return render(request, 'ordering/checkout.html', {
+        'cart': cart
     })

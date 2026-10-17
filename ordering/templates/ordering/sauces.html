@@ -6,9 +6,18 @@
 
 
     {% for name, price in sauces.items %}
+
         <p>
             {{ name }} - ${{ price|floatformat:2 }}
-            <button type="button">Add to Order</button>
         </p>
+        
+        <form method="POST" action="{% url 'add_order' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ name }}">
+            <input type="hidden" name="category" value="sauces">
+            <button type="submit">Add to Order</button>
+        </form>
+
     {% endfor %}
 {% endblock %}
