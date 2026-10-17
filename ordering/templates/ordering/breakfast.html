@@ -15,7 +15,7 @@
     {% for name, price in fruits.items %}
         <p>
             {{ name }} - ${{ price|floatformat:2 }}
-            <form method="POST" action="{% url 'add_order' %}">
+            <form method="POST" action="{% url 'sides' %}">
                 {% csrf_token %}
 
                 <input type="hidden" name="item_name" value="{{ name }}">
