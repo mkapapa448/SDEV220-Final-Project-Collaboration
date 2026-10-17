@@ -8,7 +8,7 @@ def ordering(request):
 
 def drinks(request):
     soda_menu = {
-        "Chicken-Cola": 2.45,
+        "Chicken-Cola": 2.45, #[2.45, 'static/imgurl']
         "Diet Chicken": 2.45,
         "Chicken-Cola Cherry": 2.45,
         "Sprite": 2.45,
