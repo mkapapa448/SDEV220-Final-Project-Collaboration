@@ -13,4 +13,6 @@ urlpatterns = [
     path('drinks/', views.drinks, name='drinks'),
     path('sides/', views.sides, name='sides'),
     path('entrees/', views.entrees, name='entrees'),
+    path('addorder/', views.add_order, name='add_order'),
+    path('cart/', views.view_cart, name='view_cart'),
 ]
