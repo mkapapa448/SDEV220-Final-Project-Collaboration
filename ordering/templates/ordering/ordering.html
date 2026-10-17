@@ -4,34 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Kickin' Chicken - Order Online</title>
+    <!-- FIX: Added 'fonts.' to the subdomains below -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- FIX: Added 'fonts.' to the URL below -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'ordering/style.css' %}">
 </head>
 <body>
     <header>
-        <h1>Welcome to Kickin' Chicken! 🍗</h1>
-        <p>This is your safe development branch.</p>
+        <h1>Kickin' Chicken</h1>
     </header>
+    <nav><a href="/entrees/" class="nav-link-underline">Entrées</a>
+        <a href="/sides/" class="nav-link-underline">Sides</a>
+        <a href="/breakfast/" class="nav-link-underline">Breakfast</a>
+        <a href="/meals/" class="nav-link-underline">Meals</a>
+        <a href="/drinks/" class="nav-link-underline">Coffee & Drinks</a>
+        <a href="/treats/" class="nav-link-underline">Treats</a>
+        <a href="/salads/" class="nav-link-underline">Salads</a>
+        <a href="/sauces/" class="nav-link-underline">Sauces</a>
+        <a href="/kidsmeals/" class="nav-link-underline">Kid's Meals</a>
+        <a href="/familymeals/" class="nav-link-underline">Family Meals</a>
+        <a href="/cart/" class="nav-link-underline">Cart</a>
+    </nav>
 
     <main>
-
-        <h2>Menu Options</h2>
-        
-        <ul>
-            <li><a href="/entrees/">Entrées</a></li>
-            <li><a href="/sides/">Sides</a></li>
-            <li><a href="/breakfast/">Breakfast</a></li>
-            <li><a href="/meals/">Meals</a></li>
-            <li><a href="/drinks/">Coffee & Drinks</a></li>
-            <li><a href="/treats/">Treats</a></li>
-            <li><a href="/salads/">Salads</a></li>
-            <li><a href="/sauces/">Sauces</a></li>
-            <li><a href="/kidsmeals/">Kid's Meals</a></li>
-            <li><a href="/familymeals/">Family Meals</a></li>
-            <li><a href="/cart/">Cart</a></li>
-        </ul>
-        
         {% block content %}
         {% endblock %}
-    </main>
+    </main>        
+
+    
     <script src="{% static 'ordering/script.js' %}"></script>
 </body>
 </html>
