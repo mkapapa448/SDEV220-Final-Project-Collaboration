@@ -8,6 +8,9 @@ from django.http import HttpResponse
 def ordering(request):
     return render(request, 'ordering/ordering.html')
 
+def home(request):
+    return render(request, 'ordering/home.html')
+
 soda_menu = {
     "Chicken-Cola": 2.45,
     "Diet Chicken": 2.45,

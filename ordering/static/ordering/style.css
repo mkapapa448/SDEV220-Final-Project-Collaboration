@@ -54,19 +54,17 @@ html, body {
 	header h1 {
 		font-size: 3em;
 	}
+
 	header a {
-		color: rgba(135, 60, 201, 1);
-		text-decoration: none;
+		color: rgba(255, 255, 255, 1);
 		transition: all 0.5s;
-	}	
-	header a:active {
-		color: rgba(135, 60, 201, 0.7);
+		transform: scale(100%);
 		text-decoration: none;
 	}
 	header a:hover {
-		color: rgba(135, 60, 201, 0.7);
+		color: rgba(255, 255, 255, 1);
 		transition: all 0.5s;
-		transform: scale(102%);
+		transform: scale(100%);
 		text-decoration: none;
 	}
 	.titleheading {
@@ -150,12 +148,14 @@ html, body {
 	.foodtile {
 		overflow: hidden;
 		word-wrap: break-word;
-		
+		/**display: flex;**/
+  		/**align-items: flex-end;**/
+
 		opacity: 50%;
         animation: fadeIn 1s forwards;	
 		transition: all 1s ease;
 	
-        height: 12em;
+        height: 8.5em;
 		width: 30%;
 		margin: 1%;
 		
@@ -164,7 +164,7 @@ html, body {
 		text-decoration: none;
 		
 		padding: 3%;
-		
+
         border-radius: 15px;
 		background-color: #FFFFFF;
 		
@@ -175,8 +175,15 @@ html, body {
             0 10px 15px -3px rgba(0, 0, 0, 0.03),
             0 20px 26px -5px rgba(0, 0, 0, 0.02);
 	}
+	.foodtile h5 {
+		position: absolute;
+		top: -0.5em;
+		padding-right: 1em;
+	}
 
 	.foodtile button {
+		position: absolute;
+		bottom: 1.75em;
         border: 2px solid #f00000;
         background-color: #ffffff;
         border-radius: 5em;
@@ -186,9 +193,16 @@ html, body {
 		font-size: 0.5em;		
 		color: #f00000;
 		text-decoration: none;
+		transition: all 0.3s ease;
 	}
 	.foodtile button:hover {
 		cursor: pointer;
+		background-color: #d60000;
+		color: #FFFFFF;
+		transition: all 0.3s ease;
+	}
+	.foodtile button .checkoutbtn {
+		position: relative;
 	}
 	.foodtile p {
 		word-wrap: break-word;

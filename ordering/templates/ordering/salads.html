@@ -4,19 +4,20 @@
     <h1>Salads</h1>
 
 
-    {% for name, price in salads.items %}
+    <div id="foodtilescontainer">
+        {% for name, price in salads.items %}
+            <div class="foodtile">
+                <h5>
+                    {{ name }} - ${{ price|floatformat:2 }}
+                </h5>
+                <form method="POST" action="{% url 'add_order' %}">
+                    {% csrf_token %}
 
-        <p>
-            {{ name }} - ${{ price|floatformat:2 }}
-        </p>
-        
-        <form method="POST" action="{% url 'add_order' %}">
-            {% csrf_token %}
-
-            <input type="hidden" name="item_name" value="{{ name }}">
-            <input type="hidden" name="category" value="salads">
-            <button type="submit">Add to Order</button>
-        </form>
-
-    {% endfor %}
+                    <input type="hidden" name="item_name" value="{{ name }}">
+                    <input type="hidden" name="category" value="breakfast">
+                    <button type="submit">Add to Order</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
