@@ -1,0 +1,61 @@
+{% load static %}
+{% extends 'ordering/ordering.html' %}
+{% block content %}
+    <div class="category-banner"><img src="{% static 'ordering/images/entrees.jpg' %}" alt="Entrées food photograph"></div>
+
+    <h1>Entrées Menu</h1>
+
+
+    <h2>Original Menu</h2>
+    {% for name, price in original_entree.items %}
+    
+        <p>
+            {{ name }} - ${{ price|floatformat:2 }}
+        </p>
+        
+        <form method="POST" action="{% url 'add_order' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ name }}">
+            <input type="hidden" name="category" value="entrees">
+            <button type="submit">Add to Order</button>
+        </form>
+
+    {% endfor %}
+
+    <h2>Spicy Menu</h2>
+
+    {% for name, price in spicy_entree.items %}
+
+        <p>
+            {{ name }} - ${{ price|floatformat:2 }}
+        </p>
+        
+        <form method="POST" action="{% url 'add_order' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ name }}">
+            <input type="hidden" name="category" value="entrees">
+            <button type="submit">Add to Order</button>
+        </form>
+
+    {% endfor %}
+
+    <h2>Nugget Menu</h2>
+
+    {% for name, price in nugget_entree.items %}
+
+        <p>
+            {{ name }} - ${{ price|floatformat:2 }}
+        </p>
+        
+        <form method="POST" action="{% url 'add_order' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ name }}">
+            <input type="hidden" name="category" value="entrees">
+            <button type="submit">Add to Order</button>
+        </form>
+
+    {% endfor %}
+{% endblock %}

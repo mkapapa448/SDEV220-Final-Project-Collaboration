@@ -1,0 +1,25 @@
+{% load static %}
+{% extends 'ordering/ordering.html' %}
+{% block content %}
+    <div class="category-banner"><img src="{% static 'ordering/images/sauces.jpg' %}" alt="Sauces food photograph"></div>
+
+    
+    <h1>Sauces</h1>
+
+
+    {% for name, price in sauces.items %}
+
+        <p>
+            {{ name }} - ${{ price|floatformat:2 }}
+        </p>
+        
+        <form method="POST" action="{% url 'add_order' %}">
+            {% csrf_token %}
+
+            <input type="hidden" name="item_name" value="{{ name }}">
+            <input type="hidden" name="category" value="sauces">
+            <button type="submit">Add to Order</button>
+        </form>
+
+    {% endfor %}
+{% endblock %}

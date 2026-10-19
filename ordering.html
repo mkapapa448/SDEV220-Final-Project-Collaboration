@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kickin' Chicken - Order Online</title>
+    <!-- FIX: Added 'fonts.' to the subdomains below -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- FIX: Added 'fonts.' to the URL below -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'ordering/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Kickin' Chicken</h1>
+    </header>
+    <nav><a href="/entrees/" class="nav-link-underline">Entrées</a>
+        <a href="/sides/" class="nav-link-underline">Sides</a>
+        <a href="/breakfast/" class="nav-link-underline">Breakfast</a>
+        <a href="/meals/" class="nav-link-underline">Meals</a>
+        <a href="/drinks/" class="nav-link-underline">Coffee & Drinks</a>
+        <a href="/treats/" class="nav-link-underline">Treats</a>
+        <a href="/salads/" class="nav-link-underline">Salads</a>
+        <a href="/sauces/" class="nav-link-underline">Sauces</a>
+        <a href="/kidsmeals/" class="nav-link-underline">Kid's Meals</a>
+        <a href="/familymeals/" class="nav-link-underline">Family Meals</a>
+        <a href="/cart/" class="nav-link-underline">Cart</a>
+    </nav>
+
+    <main>
+    {% if request.path == '/' %}
+    <section class="category-home" aria-label="Food categories">
+        <h2>Choose a category</h2>
+        <p>Browse the menu and add your favorites to your order.</p>
+        <div class="category-grid">
+            <a class="category-card" href="/entrees/"><img src="{% static 'ordering/images/entrees.jpg' %}" alt="Entrées food photograph" loading="lazy"><span>Entrées</span></a>
+            <a class="category-card" href="/sides/"><img src="{% static 'ordering/images/sides.jpg' %}" alt="Sides food photograph" loading="lazy"><span>Sides</span></a>
+            <a class="category-card" href="/breakfast/"><img src="{% static 'ordering/images/breakfast.jpg' %}" alt="Breakfast food photograph" loading="lazy"><span>Breakfast</span></a>
+            <a class="category-card" href="/meals/"><img src="{% static 'ordering/images/meals.jpg' %}" alt="Meals food photograph" loading="lazy"><span>Meals</span></a>
+            <a class="category-card" href="/drinks/"><img src="{% static 'ordering/images/drinks.jpg' %}" alt="Coffee &amp; Drinks food photograph" loading="lazy"><span>Coffee &amp; Drinks</span></a>
+            <a class="category-card" href="/treats/"><img src="{% static 'ordering/images/treats.jpg' %}" alt="Treats food photograph" loading="lazy"><span>Treats</span></a>
+            <a class="category-card" href="/salads/"><img src="{% static 'ordering/images/salads.jpg' %}" alt="Salads food photograph" loading="lazy"><span>Salads</span></a>
+            <a class="category-card" href="/sauces/"><img src="{% static 'ordering/images/sauces.jpg' %}" alt="Sauces food photograph" loading="lazy"><span>Sauces</span></a>
+            <a class="category-card" href="/kidsmeals/"><img src="{% static 'ordering/images/kidsmeals.jpg' %}" alt="Kid’s Meals food photograph" loading="lazy"><span>Kid’s Meals</span></a>
+            <a class="category-card" href="/familymeals/"><img src="{% static 'ordering/images/familymeals.jpg' %}" alt="Family Meals food photograph" loading="lazy"><span>Family Meals</span></a>
+        </div>
+    </section>
+    {% endif %}
+        {% block content %}
+        {% endblock %}
+    </main>        
+
+    
+    <script src="{% static 'ordering/script.js' %}"></script>
+</body>
+</html>
