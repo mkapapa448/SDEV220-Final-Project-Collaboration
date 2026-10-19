@@ -155,7 +155,7 @@ html, body {
         animation: fadeIn 1s forwards;	
 		transition: all 1s ease;
 	
-        height: 7em;
+        height: 8.5em;
 		width: 30%;
 		margin: 1%;
 		
@@ -178,6 +178,7 @@ html, body {
 	.foodtile h5 {
 		position: absolute;
 		top: -0.5em;
+		padding-right: 1em;
 	}
 
 	.foodtile button {
@@ -199,6 +200,9 @@ html, body {
 		background-color: #d60000;
 		color: #FFFFFF;
 		transition: all 0.3s ease;
+	}
+	.foodtile button .checkoutbtn {
+		position: relative;
 	}
 	.foodtile p {
 		word-wrap: break-word;
